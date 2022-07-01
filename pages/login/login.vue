@@ -9,8 +9,7 @@
 		</view>
 		<view class="row">
 
-			<input class="uni-input" v-model="password" :password="pwdType" placeholder-class='placeSty'
-				maxlength='12' type="text" placeholder="请输入密码" @input="userInput" />
+			<input class="uni-input" v-model="password" :password="pwdType" placeholder-class='placeSty'type="text" placeholder="请输入密码" @input="userInput" />
 			<view class="imgbox" @click="showbtn">
 				<image class="img" :src=imgSrc mode=""></image>
 			</view>
