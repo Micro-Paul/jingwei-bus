@@ -95,6 +95,18 @@
 		async onLoad() {
 			try {
 				const lineData = await this.$u.api.getLineList()
+				uni.setStorageSync("lineData", lineData)
+				this.initData(lineData)
+				
+			} catch (err) {
+				console.log(err)
+				const lineData = uni.getStorageSync("lineData")
+				this.initData(lineData)
+			}
+
+		},
+		methods: {
+			async initData(lineData) {
 				for (let line of lineData) {
 					if (line.lineName.includes('一号线')) {
 						this.lineList[0].list.push({
@@ -128,12 +140,7 @@
 					lineId: this.lineId,
 					date: this.leaveDate
 				})
-			} catch (err) {
-				console.log(err)
-			}
-
-		},
-		methods: {
+			},
 			setDateList(now) {
 				let timestamp = now
 				for (let i = 0; i < 4; i++) {
